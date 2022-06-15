@@ -1,0 +1,12 @@
+.header-class{
+    background: lightblue;
+    margin: auto;
+    text-align: center;
+    vertical-align: center;
+    border: dotted black 2px;    
+}
+
+.header-border{
+    border: solid peachpuff 10px;
+
+}
