@@ -2,5 +2,5 @@
 
 Recommended Tools:
 
-let IDE = VSCode;
+let IDE = VSCode; <br>
 let extensions = {"Live server", "prettier", "IntelliCode"};
