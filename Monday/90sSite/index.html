@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .grid-container {
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+        height: 500px;
+    }
+
+    .grid-item1 {
+        grid-row: 1 / 1;
+        text-align: left;
+        background-image: url(hampsterdance.gif);
+        background-color: black;
+        text-align: center;
+        color: deeppink;
+    }
+
+    .grid-item2 {
+        grid-row: 1 / 2;
+        text-align: left;
+    }
+
+    .grid-item3 {
+        grid-row: 3 / 2;
+        text-align: left;
+    }
+
+    h1 {
+        color: purple;
+        font-family: monospace;
+        border: 2px solid deeppink
+    }
+</style>
+
+<body>
+
+    <div class="grid-container">
+        <div class="grid-item1">
+            <h1>hello world</h1>
+            <h2>hello country</h2>
+            <h3>hello tri-state area</h3>
+            <h4>hello slc</h4>
+            <h5>hello university</h5>
+            <h6>hello camp</h6>
+            <p id="test">whatsup</p>
+            <img src="hampsterdance.gif">
+            <audio controls>
+                <source src="lofiDownload.mp3" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="grid-item2">
+            <h1><b> THIS IS A 90s WEBSITE </b></h1>
+            <a href="topFrame2.html">heyo link</href>
+        </div>
+        <div class="grid-item3"> hi</div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+    </div>
+
+</body>
+
+<!-- <frameset cols="10%,80%,10%">
+    <frame name="top" src="topFrame.html" />
+    <frame name="main" src="mainFrame.html" />
+    <frame name="bottom" src="bottomFrame.html" />
+
+    <noframes>
+
+        <body>Your browser does not support frames.</body>
+    </noframes>
+
+</frameset> -->
+
+</html>

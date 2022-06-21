@@ -1,0 +1,64 @@
+body {
+  background-color: palevioletred;
+  text-align: center;
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 40px;
+}
+
+h2 {
+  color: black;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -120%);
+}
+
+.answer {
+  color: black;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 12px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -120%);
+  visibility: hidden;
+}
+
+div {
+  border-radius: 50%;
+  display: inline-block;
+  align-items: center;
+}
+
+.blackCircle {
+  width: 400px;
+  height: 400px;
+  background: black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.whiteCircle {
+  width: 200px;
+  height: 200px;
+  background: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.btn,
+.test {
+  width: 500px;
+  height: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 500%);
+}
