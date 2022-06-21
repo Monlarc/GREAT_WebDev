@@ -1,9 +1,11 @@
-let button = document.querySelector(".btn");
-//button.addEventListener("click", btnClicked);
-print(hi);
+let button = document.querySelector(".test");
+button.addEventListener("click", btnClicked);
+
+
+//btnClicked();
 
 function btnClicked() {
-    print("hi");
+
     var answers = ["It is certain", 
                    "It is decidedly so", 
                    "Without a doubt", 
@@ -24,8 +26,8 @@ function btnClicked() {
                    "Cannot predict now", 
                    "Concentrate and ask again"];
 
-    var randomChoice = Math.floor(Math.random()) * answers.length;
-    document.querySelector('.text').innerHTML(answers[randomChoice]);
-    document.write(5 + 6);
-    location.reload();
+    var randomChoice = Math.floor(Math.random() * answers.length);
+    document.querySelector(".eight").style.visibility = "hidden";
+    document.querySelector(".answer").style.visibility = "visible";
+    document.querySelector(".answer").innerHTML = answers[randomChoice];
 }
