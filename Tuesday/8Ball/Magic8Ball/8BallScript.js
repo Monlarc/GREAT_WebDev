@@ -1,4 +1,4 @@
-let button = document.querySelector(".test");
+let button = document.querySelector(".btn");
 button.addEventListener("click", btnClicked);
 
 
@@ -30,4 +30,9 @@ function btnClicked() {
     document.querySelector(".eight").style.visibility = "hidden";
     document.querySelector(".answer").style.visibility = "visible";
     document.querySelector(".answer").innerHTML = answers[randomChoice];
+
+    document.querySelector(".triangle").style.visibility = "visible";
+    document.querySelector(".whiteCircle").style.width = "250px";
+    document.querySelector(".whiteCircle").style.height = "250px";
+    document.querySelector(".whiteCircle").style.background = "gray";
 }

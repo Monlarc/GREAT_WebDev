@@ -25,9 +25,13 @@ h2 {
   left: 50%;
   transform: translate(-50%, -120%);
   visibility: hidden;
+  color:white;
+  width:100px;
+
 }
 
-div {
+.blackCircle, .whiteCircle, .shiny, .shiny2{ 
+  /* , .shiny3{ */
   border-radius: 50%;
   display: inline-block;
   align-items: center;
@@ -53,12 +57,62 @@ div {
   transform: translate(-50%, -50%);
 }
 
-.btn,
-.test {
-  width: 500px;
-  height: 50px;
+.shiny{
+  width: 40px;
+  height: 40px;
+  background: white;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-325%, -325%);
+}
+
+.shiny2{
+  width: 20px;
+  height: 20px;
+  background: white;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-500%, -680%);
+}
+
+/* .shiny3{
+  width: 20px;
+  height: 20px;
+  background: white;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-660%, -500%);
+} */
+
+.btn{
+  width: 200px;
+  height: 70px;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, 500%);
+  transform: translate(-50%, 350%);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 24px;
+}
+
+.btn:hover{
+  background: blue;
+  color: white;
+}
+
+.triangle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -35%);
+  
+  width: 0; 
+  height: 0; 
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+  border-top: 150px solid blue;
+  visibility: hidden;
 }
