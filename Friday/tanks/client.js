@@ -51,7 +51,7 @@ function drawMap(event){
 }
 
 function openConnection() {
-    socket = new WebSocket("ws://localhost:8080");
+    socket = new WebSocket("ws://10.17.250.208:8080");
     // Connection opened
     socket.addEventListener("open", function (event) {
         console.log("connected to server");
