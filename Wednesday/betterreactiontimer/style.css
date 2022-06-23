@@ -1,0 +1,27 @@
+.btn{
+    background-color: black;
+    height: 75px;
+    width: 200px;
+    border-radius: 20px;
+    border: 3px solid white;
+    color: white;
+    position: relative;
+    top: 15px;
+}
+
+.btn:hover{
+    background-color: #4b4d4c;
+}
+
+.title{
+    font-size: xxx-large;
+    font-weight: bold;
+    text-decoration: underline dotted;
+}
+
+.timedisplay{
+    font-size: larger;
+    position: relative;
+    top: 30px;
+    font-style: italic;
+}

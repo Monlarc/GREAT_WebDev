@@ -50,20 +50,28 @@ function drawMap(event){
 
 }
 
+function closeConnection(event){
+    document.getElementById("connectButton").style.visibility = "visible";
+}
+
 function openConnection() {
     socket = new WebSocket("ws://10.17.250.208:8080");
     // Connection opened
     socket.addEventListener("open", function (event) {
         console.log("connected to server");
+        document.getElementById("connectButton").style.visibility = "hidden";
     });
 
     // Listen for messages
     socket.addEventListener("message", drawMap);
+    socket.addEventListener("close", closeConnection);
 }
 
 function pingServer(){
+    moving = "true";
     socket.send("{\"moving\": \"" + moving + "\", \"dir\": \"" + direction + "\"}");
     moving = "false";
 }
 
+// openConnection()
 setInterval(pingServer, 33);
