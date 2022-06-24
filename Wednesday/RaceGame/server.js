@@ -21,9 +21,13 @@ wsServer.on("request", function (request) {
   connection.on("message", function (message) {
     connections.forEach((connection) => {
       console.log("Received Message:", message.utf8Data);
-      if (message.utf8Data == "start game") {
+      if (message.utf8Data == "startgame") {
         gameRunning = true;
+        redPos = 10;
+        bluePos = 10;
+        connection.sendUTF("pos " + redPos + " " + bluePos);
         console.log("game is now running");
+        connection.sendUTF("startgame");
       }
       if (gameRunning == true) {
         if (message.utf8Data == "red car moves") {

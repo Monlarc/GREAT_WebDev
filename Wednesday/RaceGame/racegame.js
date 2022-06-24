@@ -30,6 +30,8 @@ ws.onmessage = function (e) {
     if (data[1] == "red") {
       console.log("red won");
     }
+  } else if (data[0] == "startgame") {
+    startGame();
   }
 };
 
@@ -49,6 +51,10 @@ const finishLine = canvas.width - 15;
 
 let drawID = setInterval(draw, 33);
 
+function runGame() {
+  ws.send("startgame");
+}
+
 function startGame() {
   btn.style.visibility = "hidden";
   redPos = 10;
@@ -57,7 +63,6 @@ function startGame() {
   blueKey = true;
   racing = false;
   countDown(3);
-  ws.send("start game");
 }
 
 function countDown(time) {
