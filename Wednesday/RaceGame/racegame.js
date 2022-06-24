@@ -18,6 +18,11 @@ ws.onopen = function () {
 
 ws.onmessage = function (e) {
   console.log("Received: '" + e.data + "'");
+  if (e.data == "red car moves") {
+    redPos += speed;
+  } else if (e.data == "blue car moves") {
+    bluePos += speed;
+  }
 };
 
 //END SERVER CONNECTION CODE
@@ -96,26 +101,30 @@ function keyboardHandler(event) {
     // a
     if (redKey) {
       ws.send("red car moves");
-      redPos += speed;
+      //redPos += speed;
       redKey = false;
     }
   } else if (event.keyCode == 83) {
     // s
+
     if (!redKey) {
-      redPos += speed;
+      ws.send("red car moves");
+      // redPos += speed;
       redKey = true;
     }
   } else if (event.keyCode == 74) {
     // j
     if (blueKey) {
-      bluePos += speed;
+      //bluePos += speed;
       blueKey = false;
+      ws.send("blue car moves");
     }
   } else if (event.keyCode == 75) {
     // k
     if (!blueKey) {
-      bluePos += speed;
+      //bluePos += speed;
       blueKey = true;
+      ws.send("blue car moves");
     }
   }
 
