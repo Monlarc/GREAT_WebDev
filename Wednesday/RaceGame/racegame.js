@@ -26,9 +26,11 @@ ws.onmessage = function (e) {
     //see if red or blue win
     if (data[1] == "blue") {
       console.log("blue won");
+      detectWin();
     }
     if (data[1] == "red") {
       console.log("red won");
+      detectWin();
     }
   } else if (data[0] == "startgame") {
     startGame();

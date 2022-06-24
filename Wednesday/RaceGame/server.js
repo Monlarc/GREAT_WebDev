@@ -7,7 +7,7 @@ server.listen(9898);
 
 let redPos = 10;
 let bluePos = 10;
-let speed = 9;
+let speed = 1;
 let gameRunning = false;
 
 const wsServer = new WebSocketServer({
