@@ -14,6 +14,8 @@ let racing = false;
 //from there the server should be running
 //if server breaks restart it
 //if client breaks refresh
+
+//do "npm i" in terminal
 const ws = new WebSocket("ws://10.17.197.96:9898/");
 
 ws.onopen = function () {
