@@ -19,6 +19,11 @@ wsServer.on("request", function (request) {
   connections.push(connection);
 
   connection.on("message", function (message) {
+    if (message.utf8Data == "red car moves") {
+      redPos += speed;
+    } else if (message.utf8Data == "blue car moves") {
+      bluePos += speed;
+    }
     connections.forEach((connection) => {
       console.log("Received Message:", message.utf8Data);
       if (message.utf8Data == "startgame") {
@@ -31,10 +36,8 @@ wsServer.on("request", function (request) {
       }
       if (gameRunning == true) {
         if (message.utf8Data == "red car moves") {
-          redPos += speed;
           connection.sendUTF("pos " + redPos + " " + bluePos);
         } else if (message.utf8Data == "blue car moves") {
-          bluePos += speed;
           connection.sendUTF("pos " + redPos + " " + bluePos);
         } else if (message.utf8Data == "gameover blue") {
           bluePos = 10;
@@ -49,6 +52,8 @@ wsServer.on("request", function (request) {
     });
   });
   connection.on("close", function (reasonCode, description) {
+    let oldClient = connections.indexOf(connection);
+    delete connections[oldClient];
     console.log("Client has disconnected.");
   });
 });
