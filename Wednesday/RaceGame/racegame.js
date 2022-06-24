@@ -8,7 +8,12 @@ let blueKey = true;
 let racing = false;
 
 //SERVER CONNECTION CODE
-
+//to get IP open terminal and type IPCONFIG
+//to run it on VScode open up a terminal by the top bar or ctrl shift  `
+//then type node server.js to run the server file
+//from there the server should be running
+//if server breaks restart it
+//if client breaks refresh
 const ws = new WebSocket("ws://10.17.197.96:9898/");
 
 ws.onopen = function () {
