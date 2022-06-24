@@ -1,9 +1,14 @@
 // Node.js WebSocket server script
 const http = require("http");
 const WebSocketServer = require("websocket").server;
-
+let connections = [];
 const server = http.createServer();
 server.listen(9898);
+
+let redPos = 10;
+let bluePos = 10;
+let speed = 9;
+let gameRunning = false;
 
 const wsServer = new WebSocketServer({
   httpServer: server,
@@ -11,10 +16,33 @@ const wsServer = new WebSocketServer({
 
 wsServer.on("request", function (request) {
   const connection = request.accept(null, request.origin);
+  connections.push(connection);
 
   connection.on("message", function (message) {
-    console.log("Received Message:", message.utf8Data);
-    connection.sendUTF(`${message.utf8Data}`);
+    connections.forEach((connection) => {
+      console.log("Received Message:", message.utf8Data);
+      if (message.utf8Data == "start game") {
+        gameRunning = true;
+        console.log("game is now running");
+      }
+      if (gameRunning == true) {
+        if (message.utf8Data == "red car moves") {
+          redPos += speed;
+          connection.sendUTF("pos " + redPos + " " + bluePos);
+        } else if (message.utf8Data == "blue car moves") {
+          bluePos += speed;
+          connection.sendUTF("pos " + redPos + " " + bluePos);
+        } else if (message.utf8Data == "gameover blue") {
+          bluePos = 10;
+          redPos = 10;
+          connection.sendUTF("restartgame blue");
+        } else if (message.utf8Data == "gameover red") {
+          bluePos = 10;
+          redPos = 10;
+          connection.sendUTF("restartgame red");
+        }
+      }
+    });
   });
   connection.on("close", function (reasonCode, description) {
     console.log("Client has disconnected.");

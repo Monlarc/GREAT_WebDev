@@ -9,7 +9,7 @@ let racing = false;
 
 //SERVER CONNECTION CODE
 
-const ws = new WebSocket("ws://localhost:9898/");
+const ws = new WebSocket("ws://10.17.197.96:9898/");
 
 ws.onopen = function () {
   console.log("WebSocket Client Connected");
@@ -18,10 +18,18 @@ ws.onopen = function () {
 
 ws.onmessage = function (e) {
   console.log("Received: '" + e.data + "'");
-  if (e.data == "red car moves") {
-    redPos += speed;
-  } else if (e.data == "blue car moves") {
-    bluePos += speed;
+  let data = e.data.split(" ");
+  if (data[0] == "pos") {
+    redPos = parseInt(data[1]);
+    bluePos = parseInt(data[2]);
+  } else if (data[0] == "restartgame") {
+    //see if red or blue win
+    if (data[1] == "blue") {
+      console.log("blue won");
+    }
+    if (data[1] == "red") {
+      console.log("red won");
+    }
   }
 };
 
@@ -49,6 +57,7 @@ function startGame() {
   blueKey = true;
   racing = false;
   countDown(3);
+  ws.send("start game");
 }
 
 function countDown(time) {
@@ -81,10 +90,12 @@ function draw() {
 function detectWin() {
   if (bluePos + 32 > finishLine) {
     racing = false;
+    ws.send("gameover blue");
     resultsDisplay.innerHTML = "Blue wins!";
     btn.innerHTML = "Play again";
     btn.style.visibility = "visible";
   } else if (redPos + 32 > finishLine) {
+    ws.send("gameover red");
     racing = false;
     resultsDisplay.innerHTML = "Red wins!";
     btn.innerHTML = "Play again";
