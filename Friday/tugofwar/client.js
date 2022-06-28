@@ -6,7 +6,7 @@ let ws;
 function connect() {
     // console.log("hi");
     // startButton.style.visibility = "hidden";
-    ws = new WebSocket("ws://155.98.131.0:8080/");
+    ws = new WebSocket("ws://10.17.250.208:8080/");
     ws.onopen = () => {
         ws.send("hi, server");
     };
