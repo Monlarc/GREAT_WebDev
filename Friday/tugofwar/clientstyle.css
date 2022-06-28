@@ -1,0 +1,14 @@
+.startButton{
+    background-color: burlywood;
+}
+
+.rope{
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    background-color: black;
+}
+
+body{
+    background-color: blanchedalmond;
+}
