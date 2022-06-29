@@ -148,6 +148,6 @@ function messageClients() {
     map.leaderboardChanged = false;
 }
 
-setInterval(gameLoop, 30);
+setInterval(gameLoop, 60);
 
 console.log("The WebSocket server is running on port 8080");

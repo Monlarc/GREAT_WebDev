@@ -1,7 +1,7 @@
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 
-const ws = new WebSocket("ws://10.17.250.208:8080/");
+const ws = new WebSocket("ws://10.17.160.230:8080/");
 
 let leftID;
 let rightID;
