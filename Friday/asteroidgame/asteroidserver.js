@@ -6,7 +6,6 @@ let map = {
     asteroidX: [],
     asteroidY: [],
     playerPositions: {},
-    king: 0,
     leaderboard: [],
     leaderboardChanged: false
 };
@@ -69,7 +68,7 @@ wss.on("connection", (ws) => {
 });
 
 function gameLoop() {
-    if (Math.random() > 0.8) {
+    if (Math.random() > 0.7) {
         map.asteroidX.push(Math.round(Math.random() * screenWidth));
         map.asteroidY.push(0);
     }
@@ -90,13 +89,13 @@ function gameLoop() {
     for (let i = 0; i < map.asteroidY.length; i++) {
         map.asteroidY[i] = map.asteroidY[i] + asteroidSpeed;
         if (map.asteroidY[i] > screenHeight) {
-            map.asteroidY.splice(i, 1);
-            map.asteroidX.splice(i, 1);
+            map.asteroidY.shift();
+            map.asteroidX.shift();
+
         }
     }
 
     collisionDetection();
-    updateKing();
     messageClients();
 }
 
@@ -105,16 +104,6 @@ function updateLeaderboard(){
         return playerTimeAlive[b] - playerTimeAlive[a];
     });
     map.leaderboardChanged = true;
-}
-
-function updateKing() {
-    let max = 0;
-    for (let id in clients) {
-        if (playerTimeAlive[id] > playerTimeAlive[max]) {
-            max = id;
-        }
-    }
-    map.king = max;
 }
 
 function collisionDetection() {
@@ -134,9 +123,9 @@ function collisionDetection() {
 }
 
 function killPlayer(id) {
-    updateLeaderboard();
     clients[id].send("you died");
     playerTimeAlive[id] = 0;
+    updateLeaderboard();
     map.playerPositions[id] = Math.round(Math.random() * screenWidth);
 }
 
@@ -148,6 +137,6 @@ function messageClients() {
     map.leaderboardChanged = false;
 }
 
-setInterval(gameLoop, 60);
+setInterval(gameLoop, 30);
 
 console.log("The WebSocket server is running on port 8080");

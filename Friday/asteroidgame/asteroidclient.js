@@ -1,12 +1,12 @@
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 
-const ws = new WebSocket("ws://10.17.160.230:8080/");
+const ws = new WebSocket("ws://localhost:8080/");
 
 let leftID;
 let rightID;
 
-const playerColors = ["dodgerblue", "crimson", "yellowgreen", "orange", "purple", "white"];
+const playerColors = ["dodgerblue", "crimson", "yellowgreen", "orange", "purple", "whitesmoke"];
 
 function move(event) {
     if (event.keyCode == 37) {
@@ -31,7 +31,7 @@ ws.onopen = () => {
 };
 
 ws.onmessage = (event) => {
-    // console.log("received: " + event.data);
+    console.log("received: " + event.data);
     if (event.data == "you died") {
         ctx.fillStyle = "red";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -51,7 +51,7 @@ function draw(map) {
     for (let key in map.playerPositions) {
         ctx.fillStyle = playerColors[parseInt(key) % playerColors.length];
         ctx.fillRect(parseInt(map.playerPositions[key]), canvas.height - 30, 30, 30);
-        if (key == map.king) {
+        if (key == map.leaderboard[0]) {
             ctx.fillStyle = "yellow";
             ctx.fillRect(map.playerPositions[key], canvas.height - 40, 30, 10);
         }
@@ -63,11 +63,12 @@ function draw(map) {
 }
 
 function drawLeaderboard(leaderboard){
-    let i;
-    for(i = 0; i < Math.min(5, leaderboard.length); i++){
-        document.getElementById(i.toString()).innerHTML = playerColors[leaderboard[i]];
-    }
-    for(; i < 5; i++){
-        document.getElementById(i.toString()).innerHTML = "";
+    for(let i = 0; i < 5; i++){
+        if(i < leaderboard.length){
+            document.getElementById(i.toString()).innerHTML = playerColors[leaderboard[i] % playerColors.length];
+        }
+        else{
+            document.getElementById(i.toString()).innerHTML = "";
+        }
     }
 }
