@@ -11,5 +11,5 @@ BlanchedAlmond rbg = (255, 235, 205). This color goes well with BurlyWood
 
 Recommended Tools:
 
-let IDE = VSCode; <br>
-let extensions = {"Live server", "prettier", "IntelliCode"};
+IDE: VSCode <br>
+extensions = {Live server, prettier, and IntelliCode};
